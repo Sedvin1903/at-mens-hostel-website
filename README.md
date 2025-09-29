@@ -1,4 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Thaai Ladies Hostel – One-page Next.js site (App Router)
+
+Features
+- Mobile-first responsive one-page with sections: Hero, Gallery, About, Reviews, Contact
+- Branch selection (Ambattur/Pattabiram) with shared context
+- Google Reviews fetched securely via API route `/api/reviews?placeId=...`
+- EmailJS-powered contact form
+- Google Maps embed per-branch
+- TailwindCSS styling, shadcn-style elements, framer-motion micro-animations
+
+Tech stack
+- Next.js 13+ App Router
+- TailwindCSS v4
+- Framer Motion
+- EmailJS
+
+Getting started
+1) Install dependencies
+```bash
+npm install
+```
+
+2) Set environment variables in `.env.local`
+```bash
+GOOGLE_API_KEY=your_server_google_api_key
+NEXT_PUBLIC_PLACE_ID_AMBATTUR=your_google_place_id
+NEXT_PUBLIC_PLACE_ID_PATTABIRAM=your_google_place_id
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_emailjs_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+# Optional: if you have a dedicated maps embed key
+NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY=your_embed_key
+```
+
+3) Run the dev server
+```bash
+npm run dev
+```
+Open `http://localhost:3000`.
+
+EmailJS template fields
+- from_name
+- reply_to
+- phone (optional)
+- message
+- branch
+
+Production build
+```bash
+npm run build && npm start
+```
+
+Vercel deployment
+1) Push this repo to GitHub/GitLab
+2) Import to Vercel
+3) Add the same environment variables in Project Settings → Environment Variables
+4) Assign your custom domain (e.g., `thaaihostel.in`) in Vercel → Domains
+
+Project structure
+```
+public/
+  images/
+    ambattur/* (placeholder svgs)
+    pattabiram/* (placeholder svgs)
+src/
+  app/
+    api/reviews/route.js
+    layout.tsx
+    page.jsx
+    globals.css
+  components/
+    Navbar.jsx, Hero.jsx, Gallery.jsx, About.jsx, Reviews.jsx, Contact.jsx
+  context/
+    BranchContext.jsx
+```
+
+Notes
+- Replace placeholder SVGs in `public/images/*` with real photos when ready.
+- The reviews API uses Places Details API; ensure the key has Places API access.
 
 ## Getting Started
 
