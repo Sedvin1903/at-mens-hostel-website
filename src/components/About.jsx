@@ -11,8 +11,8 @@ export default function About() {
           </p>
           <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
             <li>• 24/7 Security and CCTV</li>
-            <li>• Nutritious Vegetarian Meals</li>
-            <li>• High-speed Wi‑Fi</li>
+            <li>• Nutritious Veg/Non-Veg Meals</li>
+            <li>• High-speed Wi-Fi</li>
             <li>• Housekeeping & Laundry</li>
             <li>• Power Backup</li>
             <li>• Easy Access to Bus/Train</li>

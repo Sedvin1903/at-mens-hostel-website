@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useBranch } from "@/context/BranchContext";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, MapPin } from "lucide-react";
 
 const sections = [
   { id: "hero", label: "Home" },
@@ -15,6 +15,7 @@ const sections = [
 export default function Navbar() {
   const { branch, setBranch } = useBranch();
   const [open, setOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handler = () => setOpen(false);
@@ -22,9 +23,31 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
+
   const onNav = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleBranchChange = (newBranch) => {
+    setBranch(newBranch);
+    setOpen(false);
   };
 
   return (
@@ -45,33 +68,47 @@ export default function Navbar() {
           ))}
 
           {/* Branch dropdown */}
-          <div className="relative">
+          <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setOpen((v) => !v)}
-              className="inline-flex items-center gap-1 text-sm border rounded-full px-4 py-2 hover:bg-gray-50 transition"
+              className="inline-flex items-center gap-2 text-sm bg-pink-600 text-white rounded-full px-4 py-2 hover:bg-pink-700 transition-all duration-200 shadow-md hover:shadow-lg"
             >
+              <MapPin size={16} />
               {branch === "ambattur" ? "Ambattur" : "Pattabiram"}
-              <ChevronDown size={16} />
+              <ChevronDown 
+                size={16} 
+                className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+              />
             </button>
             {open && (
-              <div className="absolute right-0 mt-2 w-44 rounded-xl border bg-white shadow-lg overflow-hidden">
+              <div className="absolute right-0 mt-2 w-48 rounded-xl border border-gray-200 bg-white shadow-xl overflow-hidden z-50">
                 <button
-                  className="w-full text-left px-4 py-2 hover:bg-gray-50 text-sm rounded-t-xl transition"
-                  onClick={() => {
-                    setBranch("ambattur");
-                    setOpen(false);
-                  }}
+                  className={`w-full text-left px-4 py-3 text-sm transition-all duration-200 flex items-center gap-3 ${
+                    branch === "ambattur" 
+                      ? "bg-pink-50 text-pink-700 font-medium" 
+                      : "hover:bg-gray-50 text-gray-700"
+                  }`}
+                  onClick={() => handleBranchChange("ambattur")}
                 >
-                  Ambattur
+                  <MapPin size={16} className={branch === "ambattur" ? "text-pink-600" : "text-gray-400"} />
+                  <span>Ambattur</span>
+                  {branch === "ambattur" && (
+                    <div className="ml-auto w-2 h-2 bg-pink-600 rounded-full"></div>
+                  )}
                 </button>
                 <button
-                  className="w-full text-left px-4 py-2 hover:bg-gray-50 text-sm rounded-b-xl transition"
-                  onClick={() => {
-                    setBranch("pattabiram");
-                    setOpen(false);
-                  }}
+                  className={`w-full text-left px-4 py-3 text-sm transition-all duration-200 flex items-center gap-3 ${
+                    branch === "pattabiram" 
+                      ? "bg-pink-50 text-pink-700 font-medium" 
+                      : "hover:bg-gray-50 text-gray-700"
+                  }`}
+                  onClick={() => handleBranchChange("pattabiram")}
                 >
-                  Pattabiram
+                  <MapPin size={16} className={branch === "pattabiram" ? "text-pink-600" : "text-gray-400"} />
+                  <span>Pattabiram</span>
+                  {branch === "pattabiram" && (
+                    <div className="ml-auto w-2 h-2 bg-pink-600 rounded-full"></div>
+                  )}
                 </button>
               </div>
             )}
@@ -81,12 +118,12 @@ export default function Navbar() {
         {/* Mobile menu */}
         <div className="md:hidden">
           <select
-            className="border rounded-full px-3 py-1 text-sm"
+            className="bg-pink-600 text-white rounded-full px-3 py-2 text-sm border-0 shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300"
             value={branch}
             onChange={(e) => setBranch(e.target.value)}
           >
-            <option value="ambattur">Ambattur</option>
-            <option value="pattabiram">Pattabiram</option>
+            <option value="ambattur">📍 Ambattur</option>
+            <option value="pattabiram">📍 Pattabiram</option>
           </select>
         </div>
       </nav>
