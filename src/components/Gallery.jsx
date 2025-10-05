@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules"; // ✅ Add Autoplay
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -23,9 +23,10 @@ export default function Gallery() {
         </h2>
 
         <Swiper
-          modules={[Navigation, Pagination]}
+          modules={[Navigation, Pagination, Autoplay]} // ✅ Include Autoplay
           navigation
           pagination={{ clickable: true }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }} // ✅ 5 seconds
           className="w-full max-w-5xl mx-auto"
         >
           {images.map((src, i) => (
