@@ -16,10 +16,10 @@ export default function Gallery() {
   const images = galleryImages[branch] || [];
 
   return (
-    <section id="gallery" className="section bg-pink-50">
+    <section id="gallery" className="section bg-blue-50">
       <div className="container">
         <h2 className="text-2xl md:text-3xl font-semibold text-center mb-6">
-          Gallery ({branch === "ambattur" ? "Ambattur" : "Pattabiram"})
+          Gallery (Pattabiram)
         </h2>
 
         <Swiper

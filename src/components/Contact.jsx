@@ -53,14 +53,11 @@ export default function Contact() {
   const [buttonLabel, setButtonLabel] = useState("Send message");
 
   const locations = {
-    ambattur:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.6469969181694!2d80.14919717454889!3d13.121535011574421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5263a84bdddf43%3A0xc4962382d7e0420f!2sTHAAI%20LADIES%20HOSTEL!5e0!3m2!1sen!2sin!4v1759166840788!5m2!1sen!2sin",
     pattabiram:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.562475885373!2d80.05686107454889!3d13.126880511455925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5289080776a859%3A0x4c3466a814c972b0!2sThaai%20ladies%20hostel!5e0!3m2!1sen!2sin!4v1759167023007!5m2!1sen!2sin",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.626169826047!2d80.0568580745489!3d13.122852411545255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52890079d31493%3A0xf0a32f792bfc4504!2sAT%20Mens%20Hostel!5e0!3m2!1sen!2sin!4v1760989068088!5m2!1sen!2sin",
   };
 
   const locationNames = {
-    ambattur: "Ambattur Branch",
     pattabiram: "Pattabiram Branch"
   };
 
@@ -70,7 +67,7 @@ export default function Contact() {
         <div>
           <h2 className="text-2xl md:text-3xl font-semibold">Get in touch</h2>
           <div className="mt-2 mb-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-sm font-medium">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
               <span>📍</span>
               {locationNames[branch]}
             </div>
@@ -80,8 +77,8 @@ export default function Contact() {
             <input className="border rounded-md px-3 py-2" name="reply_to" type="email" placeholder="Email"  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"  title="Please enter a valid email address" required />
             <input className="border rounded-md px-3 py-2" name="phone" type="tel" placeholder="Phone (optional)" pattern="^\d{10}$" required />
             <textarea className="border rounded-md px-3 py-2" name="message" rows={4} placeholder="Message" required />
-            <input type="hidden" name="branch" value={branch} />
-            <button className="bg-pink-600 text-white px-5 py-2.5 rounded-md hover:bg-pink-700 text-sm" type="submit" disabled={buttonLabel !== "Send message"}>
+            <input type="hidden" name="branch" value="pattabiram" />
+            <button className="bg-blue-600 text-white px-5 py-2.5 rounded-md hover:bg-blue-700 text-sm" type="submit" disabled={buttonLabel !== "Send message"}>
             {buttonLabel}
             </button>
           </form>

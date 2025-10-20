@@ -53,7 +53,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b rounded-b-lg">
       <nav className="container flex items-center justify-between h-14">
-        <div className="font-semibold text-lg">Thaai Ladies Hostel</div>
+        <div className="font-semibold text-lg">AT Mens Hostel</div>
 
         {/* Desktop menu */}
         <div className="hidden md:flex items-center gap-6">
@@ -61,70 +61,22 @@ export default function Navbar() {
             <button
               key={s.id}
               onClick={() => onNav(s.id)}
-              className="text-sm hover:text-pink-600 rounded-full px-3 py-1 transition"
+              className="text-sm hover:text-blue-600 rounded-full px-3 py-1 transition"
             >
               {s.label}
             </button>
           ))}
 
-          {/* Branch dropdown */}
-          <div className="relative" ref={dropdownRef}>
-            <button
-              onClick={() => setOpen((v) => !v)}
-              className="inline-flex items-center gap-2 text-sm bg-pink-600 text-white rounded-full px-4 py-2 hover:bg-pink-700 transition-all duration-200 shadow-md hover:shadow-lg"
-            >
-              <MapPin size={16} />
-              {branch === "ambattur" ? "Ambattur" : "Pattabiram"}
-              <ChevronDown 
-                size={16} 
-                className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
-              />
-            </button>
-            {open && (
-              <div className="absolute right-0 mt-2 w-48 rounded-xl border border-gray-200 bg-white shadow-xl overflow-hidden z-50">
-                <button
-                  className={`w-full text-left px-4 py-3 text-sm transition-all duration-200 flex items-center gap-3 ${
-                    branch === "ambattur" 
-                      ? "bg-pink-50 text-pink-700 font-medium" 
-                      : "hover:bg-gray-50 text-gray-700"
-                  }`}
-                  onClick={() => handleBranchChange("ambattur")}
-                >
-                  <MapPin size={16} className={branch === "ambattur" ? "text-pink-600" : "text-gray-400"} />
-                  <span>Ambattur</span>
-                  {branch === "ambattur" && (
-                    <div className="ml-auto w-2 h-2 bg-pink-600 rounded-full"></div>
-                  )}
-                </button>
-                <button
-                  className={`w-full text-left px-4 py-3 text-sm transition-all duration-200 flex items-center gap-3 ${
-                    branch === "pattabiram" 
-                      ? "bg-pink-50 text-pink-700 font-medium" 
-                      : "hover:bg-gray-50 text-gray-700"
-                  }`}
-                  onClick={() => handleBranchChange("pattabiram")}
-                >
-                  <MapPin size={16} className={branch === "pattabiram" ? "text-pink-600" : "text-gray-400"} />
-                  <span>Pattabiram</span>
-                  {branch === "pattabiram" && (
-                    <div className="ml-auto w-2 h-2 bg-pink-600 rounded-full"></div>
-                  )}
-                </button>
-              </div>
-            )}
+          {/* Single branch badge */}
+          <div className="inline-flex items-center gap-2 text-sm bg-blue-600 text-white rounded-full px-4 py-2 shadow-md">
+            <MapPin size={16} />
+            Pattabiram
           </div>
         </div>
 
         {/* Mobile menu */}
         <div className="md:hidden">
-          <select
-            className="bg-pink-600 text-white rounded-full px-3 py-2 text-sm border-0 shadow-md focus:outline-none focus:ring-2 focus:ring-pink-300"
-            value={branch}
-            onChange={(e) => setBranch(e.target.value)}
-          >
-            <option value="ambattur">📍 Ambattur</option>
-            <option value="pattabiram">📍 Pattabiram</option>
-          </select>
+          <div className="bg-blue-600 text-white rounded-full px-3 py-2 text-sm shadow-md">📍 Pattabiram</div>
         </div>
       </nav>
 

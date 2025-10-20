@@ -3,13 +3,13 @@
 import { createContext, useContext, useMemo, useState } from "react";
 
 const BranchContext = createContext({
-  branch: "ambattur",
+  branch: "pattabiram",
   setBranch: () => {},
 });
 
 export function BranchProvider({ children }) {
-  const [branch, setBranch] = useState("ambattur");
-  const value = useMemo(() => ({ branch, setBranch }), [branch]);
+  const [branch] = useState("pattabiram");
+  const value = useMemo(() => ({ branch, setBranch: () => {} }), [branch]);
   return <BranchContext.Provider value={value}>{children}</BranchContext.Provider>;
 }
 

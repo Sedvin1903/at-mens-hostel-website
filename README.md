@@ -1,4 +1,4 @@
-Thaai Ladies Hostel – One-page Next.js site (App Router)
+AT Mens Hostel – One-page Next.js site (App Router)
 
 Features
 - Mobile-first responsive one-page with sections: Hero, Gallery, About, Reviews, Contact
@@ -54,7 +54,7 @@ Vercel deployment
 1) Push this repo to GitHub/GitLab
 2) Import to Vercel
 3) Add the same environment variables in Project Settings → Environment Variables
-4) Assign your custom domain (e.g., `thaaihostel.in`) in Vercel → Domains
+4) Assign your custom domain (e.g., `AThostel.in`) in Vercel → Domains
 
 Project structure
 ```
