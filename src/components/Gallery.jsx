@@ -29,19 +29,35 @@ export default function Gallery() {
           autoplay={{ delay: 5000, disableOnInteraction: false }} // ✅ 5 seconds
           className="w-full max-w-5xl mx-auto"
         >
-          {images.map((src, i) => (
-            <SwiperSlide key={i}>
-              <div className="relative w-full aspect-[4/3] md:aspect-[16/9] rounded-lg overflow-hidden bg-black">
-                <Image
-                  src={src}
-                  alt={`Hostel photo ${i + 1}`}
-                  fill
-                  className="object-cover"
-                  priority={i === 0}
-                />
-              </div>
-            </SwiperSlide>
-          ))}
+          {images.map((src, i) => {
+            // Check if the source is a Google Drive link or external URL
+            const isExternalUrl = src.startsWith('http');
+            
+            return (
+              <SwiperSlide key={i}>
+                <div className="relative w-full aspect-[4/3] md:aspect-[16/9] rounded-lg overflow-hidden bg-black">
+                  {isExternalUrl ? (
+                    // Use regular img tag for external URLs (Google Drive links)
+                    <img
+                      src={src}
+                      alt={`Hostel photo ${i + 1}`}
+                      className="w-full h-full object-cover"
+                      loading={i === 0 ? "eager" : "lazy"}
+                    />
+                  ) : (
+                    // Use Next.js Image component for local images
+                    <Image
+                      src={src}
+                      alt={`Hostel photo ${i + 1}`}
+                      fill
+                      className="object-cover"
+                      priority={i === 0}
+                    />
+                  )}
+                </div>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
     </section>
