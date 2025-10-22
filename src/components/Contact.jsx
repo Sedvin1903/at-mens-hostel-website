@@ -61,6 +61,16 @@ export default function Contact() {
     pattabiram: "Pattabiram Branch"
   };
 
+  // Contact person information
+  const contactPerson = {
+    pattabiram: {
+      name: "Mrs. Fathima Joseph",
+      phone: "+91 97108 36760",
+      email: "pattabirammenshostel@gmail.com",
+      whatsapp: "+91 97108 36760"
+    }
+  };
+
   return (
     <section id="contact" className="section bg-white-50">
       <div className="container grid md:grid-cols-2 gap-8 items-start">
@@ -70,6 +80,44 @@ export default function Contact() {
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
               <span>📍</span>
               {locationNames[branch]}
+            </div>
+          </div>
+
+          {/* Contact Person Card */}
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 mb-6 border border-blue-100">
+            <div className="flex items-start gap-3">
+              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
+                {contactPerson[branch]?.name?.split(' ').map(n => n[0]).join('') || 'RK'}
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-gray-900">{contactPerson[branch]?.name}</h3>
+                <div className="space-y-1">
+                  <a 
+                    href={`tel:${contactPerson[branch]?.phone}`}
+                    className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                    <span>☎️</span>
+                    {contactPerson[branch]?.phone}
+                  </a>
+                  <a 
+                    href={`mailto:${contactPerson[branch]?.email}`}
+                    className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                    <span>🖂</span>
+                    {contactPerson[branch]?.email}
+                  </a>
+                  <a 
+                    href={`https://wa.me/${contactPerson[branch]?.whatsapp?.replace(/[^0-9]/g, '')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-green-600 hover:text-green-800 transition-colors"
+                  >
+                    <span>📞</span>
+                    WhatsApp : {contactPerson[branch]?.whatsapp}
+                  </a>
+                  
+                </div>
+              </div>
             </div>
           </div>
           <form ref={formRef} onSubmit={onSubmit} className="mt-6 grid gap-3">
@@ -84,10 +132,10 @@ export default function Contact() {
           </form>
         </div>
         <div>
-          <div className="aspect-[4/3] w-full rounded-md overflow-hidden border bg-white">
+        <div className="w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-md overflow-hidden border bg-white">
             {!isClient ? (
               <div className="w-full h-full flex items-center justify-center text-gray-600 text-sm p-4">
-                Loading map...
+                Loading map...  
               </div>
             ) : locations[branch] ? (
               <iframe
