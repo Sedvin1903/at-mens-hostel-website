@@ -1,4 +1,4 @@
-AT Mens Hostel – One-page Next.js site (App Router)
+AT Pattabiram Mens Hostel – One-page Next.js site (App Router)
 
 Features
 - Mobile-first responsive one-page with sections: Hero, Gallery, About, Reviews, Contact

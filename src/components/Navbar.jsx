@@ -53,7 +53,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b rounded-b-lg">
       <nav className="container flex items-center justify-between h-14">
-        <div className="font-semibold text-lg">AT Mens Hostel</div>
+        <div className="font-semibold text-lg">AT Pattabiram Mens Hostel</div>
 
         {/* Desktop menu */}
         <div className="hidden md:flex items-center gap-6">

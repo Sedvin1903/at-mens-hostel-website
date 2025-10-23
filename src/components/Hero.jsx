@@ -23,7 +23,7 @@ export default function Hero() {
             Safe & Comfortable Men's Hostel in Chennai
           </h1>
           <p className="mt-4 text-gray-600">
-            Welcome to AT Mens Hostel — Pattabiram branch.
+            Welcome to AT Pattabiram Mens Hostel — Pattabiram branch.
           </p>
           <div className="mt-6 flex gap-3">
             <a

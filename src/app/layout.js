@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "AT Mens Hostel - Pattabiram",
+  title: "AT Pattabiram Mens Hostel - Pattabiram",
   description: "Safe, comfortable men's hostel in Chennai – Pattabiram branch",
 };
 

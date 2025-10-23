@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import { icons } from "lucide-react";
 
 export const metadata = {
-  title: "AT Mens Hostel - Pattabiram",
+  title: "AT Pattabiram Mens Hostel - Pattabiram",
   description: "Safe, comfortable men's hostel in Chennai - Pattabiram",
   icons : {
     icon : "/tab_pic.ico"

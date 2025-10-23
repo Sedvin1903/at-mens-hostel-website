@@ -3,7 +3,7 @@ export default function About() {
     <section id="about" className="section bg-gray-50">
       <div className="container grid md:grid-cols-2 gap-8 items-start">
         <div>
-          <h2 className="text-2xl md:text-3xl font-semibold">About AT Mens Hostel</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold">About AT Pattabiram Mens Hostel</h2>
           <p className="mt-4 text-gray-600">
             We provide secure, hygienic, and affordable accommodation for students and working men.
             Our facilities include 24x7 security, nutritious food, clean rooms, Wi‑Fi, laundry, and
